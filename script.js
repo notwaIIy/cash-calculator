@@ -1,7 +1,7 @@
 function calculateTotal() {
     // Get and validate the expected value
     const expectedValue = parseFloat(document.getElementById('expected-value').value) || 0;
-    document.getElementById('expected-display').innerText = expectedValue.toFixed(2);
+    document.getElementById('expected-display').innerText = `$${expectedValue.toFixed(2)}`;
 
     // Function to round down and display an error if decimals are entered for cash
     function validateInput(value, id) {
@@ -44,21 +44,22 @@ function calculateTotal() {
     const total = hundredsSum + fiftiesSum + twentiesSum + tensSum + fivesSum + onesSum + totalCoins;
 
     // Display the total amount
-    document.getElementById('total').innerText = total.toFixed(2);
+    document.getElementById('total').innerText = `$${total.toFixed(2)}`;
 
     // Calculate and display the difference
-    const difference = expectedValue - total;
-    document.getElementById('difference').innerText = difference.toFixed(2);
+    const difference = total - expectedValue;
+    const differenceDisplay = `${difference >= 0 ? '+' : '-'}$${Math.abs(difference).toFixed(2)}`;
+    document.getElementById('difference').innerText = differenceDisplay;
 
     // Save the log to localStorage
-    saveLog(expectedValue, total, difference);
+    saveLog(expectedValue, total, differenceDisplay);
 }
 
-function saveLog(expected, total, difference) {
+function saveLog(expected, total, differenceDisplay) {
     const log = {
-        expected: expected.toFixed(2),
-        total: total.toFixed(2),
-        difference: difference.toFixed(2),
+        expected: `$${expected.toFixed(2)}`,
+        total: `$${total.toFixed(2)}`,
+        difference: differenceDisplay,
         timestamp: new Date().toLocaleString()
     };
 
@@ -86,9 +87,9 @@ function openLogs() {
         listItem.innerHTML = `
             <div class="log-entry">
                 <strong>${log.timestamp}</strong><br>
-                <div><strong>Expected:</strong> $${log.expected}</div>
-                <div><strong>Total:</strong> $${log.total}</div>
-                <div><strong>Difference:</strong> $${log.difference}</div>
+                <div><strong>Expected:</strong> ${log.expected}</div>
+                <div><strong>Total:</strong> ${log.total}</div>
+                <div><strong>Difference:</strong> ${log.difference}</div>
             </div>
             <hr class="log-divider">
         `;
