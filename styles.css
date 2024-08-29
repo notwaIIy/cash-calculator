@@ -22,6 +22,10 @@ body, html {
     width: 90%;
     max-width: 400px;
     margin: 20px auto; /* Center container and provide space around */
+    display: flex;
+    flex-direction: column;
+    max-height: 100%; /* Ensure it doesn't overflow the screen */
+    overflow-y: auto; /* Allow scrolling within the container if needed */
 }
 
 h1 {
@@ -112,10 +116,11 @@ button:hover {
     display: none;
     padding: 20px 0;
     overflow-y: auto; /* Allow scrolling within tab content */
+    flex-grow: 1; /* Ensure it expands to take available space */
 }
 
 #logList {
-    max-height: 40vh; /* Restrict height of log list to allow scrolling */
+    max-height: 30vh; /* Restrict height of log list to allow scrolling */
     overflow-y: auto; /* Make the log list scrollable if it overflows */
     padding: 0;
     margin: 0;
@@ -142,6 +147,7 @@ button:hover {
     .container {
         width: 95%; /* Increase container width slightly on mobile for better fit */
         padding: 15px; /* Adjust padding for smaller screens */
+        max-height: calc(100vh - 40px); /* Ensure it fits within the screen height */
     }
 
     h1 {
@@ -162,6 +168,6 @@ button:hover {
     }
 
     #logList {
-        max-height: 30vh; /* Reduce max height of the log list to fit better on small screens */
+        max-height: 20vh; /* Reduce max height of the log list to fit better on small screens */
     }
 }
