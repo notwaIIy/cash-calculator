@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Counter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Title and Author Section -->
+        <h1>Money Counter</h1>
+        <p class="author">By Wally</p>
+        <hr class="section-divider">
+
+        <!-- Expected Value Input -->
+        <form id="calculatorForm">
+            <div class="input-group">
+                <label for="expected-value">Expected Value:</label>
+                <input type="number" id="expected-value" placeholder="0" step="0.01" min="0" required>
+            </div>
+            <hr class="section-divider">
+
+            <!-- Cash Denominations -->
+            <h2>Cash</h2>
+            <div class="input-group">
+                <label for="hundreds">Hundreds ($100):</label>
+                <input type="number" id="hundreds" placeholder="0" min="0">
+                <span id="hundreds-sum">$0.00</span>
+            </div>
+            <div class="input-group">
+                <label for="fifties">Fifties ($50):</label>
+                <input type="number" id="fifties" placeholder="0" min="0">
+                <span id="fifties-sum">$0.00</span>
+            </div>
+            <div class="input-group">
+                <label for="twenties">Twenties ($20):</label>
+                <input type="number" id="twenties" placeholder="0" min="0">
+                <span id="twenties-sum">$0.00</span>
+            </div>
+            <div class="input-group">
+                <label for="tens">Tens ($10):</label>
+                <input type="number" id="tens" placeholder="0" min="0">
+                <span id="tens-sum">$0.00</span>
+            </div>
+            <div class="input-group">
+                <label for="fives">Fives ($5):</label>
+                <input type="number" id="fives" placeholder="0" min="0">
+                <span id="fives-sum">$0.00</span>
+            </div>
+            <div class="input-group">
+                <label for="ones">Ones ($1):</label>
+                <input type="number" id="ones" placeholder="0" min="0">
+                <span id="ones-sum">$0.00</span>
+            </div>
+
+            <hr class="section-divider">
+
+            <!-- Coin Denominations -->
+            <h2>Coins</h2>
+            <div class="input-group">
+                <label for="total-coins">Total Coins Value:</label>
+                <input type="number" id="total-coins" placeholder="0.00" step="0.01" min="0">
+            </div>
+
+            <button type="button" onclick="calculateTotal()">Calculate Total</button>
+        </form>
+
+        <!-- Tabbed Interface -->
+        <div class="tab-container">
+            <button class="tablink" onclick="openTab(event, 'Results')">Results</button>
+            <button class="tablink" onclick="openTab(event, 'Logs')">Logs</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div id="Results" class="tabcontent">
+            <!-- Display Results -->
+            <div class="result">
+                <h2>Expected Value: $<span id="expected-display">0.00</span></h2>
+                <h2>Total Amount: $<span id="total">0.00</span></h2>
+                <h2>Difference: $<span id="difference">0.00</span></h2>
+            </div>
+        </div>
+
+        <div id="Logs" class="tabcontent" style="display: none;">
+            <!-- Logs Display -->
+            <h2>Calculation Logs</h2>
+            <ul id="logList"></ul>
+            <button type="button" onclick="clearLogs()">Clear Logs</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
