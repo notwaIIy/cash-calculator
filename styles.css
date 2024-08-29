@@ -7,7 +7,7 @@ body, html {
     height: 100%;
     width: 100%;
     overflow-x: hidden; /* Prevent horizontal scrolling */
-    overflow-y: auto; /* Allow vertical scrolling */
+    overflow-y: auto; /* Allow body to scroll */
     background-image: url('https://c4.wallpaperflare.com/wallpaper/644/884/995/bus-parody-pokemon-rain-wallpaper-preview.jpg'); /* Replace with your Snorlax image URL */
     background-size: cover;
     background-position: center;
@@ -24,8 +24,8 @@ body, html {
     margin: 20px auto; /* Center container and provide space around */
     display: flex;
     flex-direction: column;
-    max-height: 100%; /* Ensure it doesn't overflow the screen */
-    overflow-y: auto; /* Allow scrolling within the container if needed */
+    height: 100vh; /* Full height for the container */
+    overflow-y: auto; /* Allow the container to scroll */
 }
 
 h1 {
@@ -115,12 +115,11 @@ button:hover {
 .tabcontent {
     display: none;
     padding: 20px 0;
-    overflow-y: auto; /* Allow scrolling within tab content */
     flex-grow: 1; /* Ensure it expands to take available space */
 }
 
 #logList {
-    max-height: 30vh; /* Restrict height of log list to allow scrolling */
+    max-height: 40vh; /* Restrict height of log list to allow scrolling */
     overflow-y: auto; /* Make the log list scrollable if it overflows */
     padding: 0;
     margin: 0;
@@ -140,14 +139,10 @@ button:hover {
 
 /* Media Query for Mobile Devices */
 @media (max-width: 768px) {
-    body, html {
-        background-size: contain; /* Scale down the background image on mobile */
-    }
-
     .container {
-        width: 95%; /* Increase container width slightly on mobile for better fit */
-        padding: 15px; /* Adjust padding for smaller screens */
-        max-height: calc(100vh - 40px); /* Ensure it fits within the screen height */
+        height: 150vh; /* Extend height to 150% of the viewport */
+        max-height: 150vh; /* Prevent overflow outside the viewport */
+        overflow-y: auto; /* Allow scrolling inside the container */
     }
 
     h1 {
@@ -165,9 +160,10 @@ button:hover {
 
     .tabcontent {
         padding: 15px 0; /* Reduce padding inside tabs on mobile */
+        max-height: none; /* Ensure content is not restricted */
     }
 
     #logList {
-        max-height: 20vh; /* Reduce max height of the log list to fit better on small screens */
+        max-height: 30vh; /* Further reduce max height of the log list to fit better on small screens */
     }
 }
