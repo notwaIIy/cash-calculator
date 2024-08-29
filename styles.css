@@ -5,10 +5,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-    overflow: hidden; /* Prevent body scrolling */
-    background-image: url('https://c4.wallpaperflare.com/wallpaper/644/884/995/bus-parody-pokemon-rain-wallpaper-preview.jpg'); /* Replace with your Snorlax image URL */
+    overflow-y: auto; /* Allow body scrolling */
+    background-image: url('https://your-url-to-snorlax-image.jpg'); /* Replace with your Snorlax image URL */
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Make the background image fixed */
@@ -21,10 +21,10 @@ body {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 400px;
-    max-height: 100vh; /* Take up full viewport height */
+    max-height: 100%; /* Allow the container to grow with the content */
     display: flex;
     flex-direction: column;
-    overflow: hidden; /* Ensure container itself doesn't scroll */
+    overflow: visible; /* Ensure the container itself doesn't restrict content overflow */
 }
 
 h1 {
@@ -114,12 +114,12 @@ button:hover {
 .tabcontent {
     display: none;
     padding: 20px 0;
-    flex: 1; /* Ensure content fits within the container */
-    overflow-y: auto; /* Allow scrolling only within the active tab content */
+    flex: 1;
+    overflow-y: auto; /* Allow scrolling within tab content */
 }
 
 #logList {
-    max-height: 100%; /* Take up full available height of the tab */
+    max-height: 40vh; /* Restrict height of log list to allow scrolling */
     overflow-y: auto; /* Make the log list scrollable if it overflows */
     padding: 0;
     margin: 0;
